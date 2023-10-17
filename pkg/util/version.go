@@ -2,14 +2,15 @@ package util
 
 import (
 	"encoding/json"
-	log "github.com/sirupsen/logrus"
-	"github.com/teamssix/cf/pkg/util/errutil"
-	"github.com/teamssix/cf/pkg/util/global"
 	"io/ioutil"
 	"net/http"
 	"os"
 	"strconv"
 	"strings"
+
+	log "github.com/sirupsen/logrus"
+	"github.com/teamssix/cf/pkg/util/errutil"
+	"github.com/teamssix/cf/pkg/util/global"
 )
 
 func GetCurrentVersion() string {
@@ -41,6 +42,8 @@ func AlertUpdateInfo() {
 }
 
 func CheckVersion(version string) (bool, string, error) {
+	return false, "", nil
+
 	WriteTimestamp(ReturnVersionTimestampFile())
 	url := "https://api.github.com/repos/teamssix/cf/releases/latest"
 	spaceClient := http.Client{}
